@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/main/home/home.css') }}">
+{% endblock page_css %}
+{% block content %}
+<div class="top_nav">
+  <ul class="top_nav_list">
+    <li class="top_nav_item"><a>New</a></li>
+    <li class="top_nav_item"><a>Hot</a></li>
+  </ul>
+</div>
+{% for post in posts.items %}
+<article class="media content-section">
+  <img class="rounded-circle article-img"
+    src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+  <div class="media-body">
+    <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+    <div class="article-metadata">
+      <a class="mr-2" href="{{ url_for('users.user', username=post.author.username) }}">{{ post.author.username
+        }}(u)</a>
+      <small class="text-muted">Date Posted: {{ post.date_posted.strftime('%d-%m-%Y') }}</small>
+    </div>
+  </div>
+</article>
+{% endfor %}
+<div class="flexbox_container">
+  {% if posts.has_prev %}
+  <button class="button button_prev"> <a class="link link_prev"
+      href="{{ url_for('main.home', page=posts.prev_num) }}">Previous</a></button>
+  {% else %}
+  <div class="tempdiv"></div>
+  {% endif %}
+
+  {% if posts.has_next %}
+  <button class="button button_next"> <a class="link link_prev"
+      href="{{ url_for('main.home', page=posts.next_num) }}">Next</a></button>
+  {% endif %}
+</div>
+{% endblock content %}

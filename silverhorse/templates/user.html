@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='about_user.css') }}">
+{% endblock page_css %}
+{% block content %}
+<div valign="top" class="content-section">
+  <section class="section_profile">
+    <!-- <div class="section_cover">
+      <img class="profile_cover_img" src="">
+    </div> -->
+    <div class="section_profilepic">
+      <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
+    </div>
+  </section>
+  <section class="section_data">
+    <h2>{{ user.username }}</h2>
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    {% if user.last_seen %}<p><i>Last seen on: {{ user.last_seen.strftime('%H:%M:%S') }}</i></p>{% endif %}
+    <p>followers : {{ user.followers.count() }}
+      {% if user.id == g.user.id %}
+    <p><a href="{{ url_for('users.account') }}"><button type="button" class="btn btn-sm btn-danger">Edit your
+          profile</button></a></p>
+    {% elif not g.user.is_following(user) %}
+    <a href="{{ url_for('users.follow', username=user.username) }}"><button type="button"
+        class="btn btn-sm btn-primary">Follow
+      </button></a>
+    {% else %}
+    <a href="{{ url_for('users.unfollow', username=user.username) }}"><button type="button"
+        class="btn btn-sm btn-danger">Unfollow</button></a>
+    {% endif %}
+    </p>
+  </section>
+</div>
+<h2 class="mb-2">Posts</h2>
+{% for post in posts.items %}
+<article class="media content-section">
+  <img class="rounded-circle article-img"
+    src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{{ url_for('users.user', username=post.author.username) }}">{{
+        post.author.username
+        }}</a>
+      <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+    </div>
+    <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+</article>
+{% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+{% if posts.page == page_num %}
+<a class="btn btn-info mb-4" href="{{ url_for('users.user', username=user.username, page=page_num) }}">{{
+  page_num
+  }}</a>
+{% else %}
+<a class="btn btn-outline-info mb-4" href="{{ url_for('users.user', username=user.username, page=page_num) }}">{{
+  page_num }}</a>
+{% endif %}
+{% else %}
+...
+{% endif %}
+{% endfor %}
+{% endblock content %}

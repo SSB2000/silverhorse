@@ -1,0 +1,153 @@
+/* custom */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: 'Roboto';
+  --ff-secondary: 'Lato';
+  --ff-secondary-ss: 'sans-serif';
+
+  --fw-reg: 300;
+  --fw-bold: 900;
+
+  --clr-light: #fff;
+  --clr-light-grey: #cacaca;
+  --clr-dark-grey: rgb(95, 95, 95);
+  --clr-accent: #16e0bd;
+  --clr-neon: hsl(317 100% 54%);
+  --clr-bg: hsl(323 21% 16%);
+  --clr-primary-font: black;
+  --clr-primary-bg: white;
+
+  --fs-h1: 3.3em;
+  --fs-h2: 1.618em;
+  --fs-h3: 1.2em;
+  --fs-body: 1.1em;
+  --fs-p: 1rem;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --fs-h1: 2.6em;
+    --fs-h2: 1.618em;
+    --fs-h3: 1.2rem;
+    --fs-body: 1.2rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+
+
+/* general property */
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+	background: #ffffff;
+	color: #000000;
+	margin-top: 4rem;
+  font-family: var(--ff-primary), var(--ff-secondary), var(--ff-secondary-ss);
+}
+  
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+  font-family: var(--ff-primary);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+p {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+  padding-left: 1.7rem;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+font-weight: 500;
+}
+
+.content-section {
+  background: #d6d6d6;
+  padding: 10px 10px;
+  border: 1px solid #000000;
+  margin-bottom: 10px;
+}
+
+.article-title {
+color: #000000;
+}
+
+a.article-title:hover {
+color: #7b6464;
+text-decoration: none;
+}
+
+.article-content {
+white-space: pre-line;
+}
+
+.article-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 16px;
+}
+
+.article-metadata a {
+  color: var(--clr-dark-grey);
+}
+
+.article-metadata a:hover {
+  color: var(--clr-primary-font);
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin: 20px;
+  border: #000000 solid 1px;
+}
+
+.account-heading {
+font-size: var(--fs-h2);
+}
+
+
+.list-group {
+background-color: rgba(33, 33, 33, 0.93);
+}
+  
+.list-group {
+	background-color: rgba(33, 33, 33, 0.93);
+}
+

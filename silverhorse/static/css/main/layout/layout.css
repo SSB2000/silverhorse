@@ -1,0 +1,20 @@
+h3 {
+  font-size: var(--fs-h3);
+}
+
+@media (min-width: 800px) {
+  .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .post_col {
+    width: 76%;
+  }
+  .side-bar_col {
+    width: 23%;
+  }
+}
+/*# sourceMappingURL=layout.css.map */

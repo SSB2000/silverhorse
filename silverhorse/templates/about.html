@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/about/about.css') }}">
+{% endblock page_css %}
+{% block main %}
+<div class="container about_us">
+	<section class="section section-intro">
+		<div class="section_info">
+			<h1 class="section_title">Amprdono</h1>
+			<h4 class="section_subtitle section_subtitle-intro">Your Gateway to Everything.</h4>
+			<p class="section-body section_body-intro">Amprdono is a socail media platform. Where you can express
+				yourself
+				to the whole wide world either individually or anonymously.</p>
+		</div>
+	</section>
+	<section class="section section-explore">
+		<div class="section_info">
+			<h1 class="section_title section_title-explore">Explore</h1>
+			<h4 class="section_subtitle section_subtitle-intro">Your Gateway to Everything.</h4>
+			<p class="section_body section-body-explore">
+				See the world from different point of view. Meet people you will like and who will like you. Explore the
+				Internet it was meant to Explored.</p>
+		</div>
+	</section>
+</div>
+{% endblock main %}

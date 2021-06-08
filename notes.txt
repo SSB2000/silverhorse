@@ -1,0 +1,40 @@
+*  {{......}} : Jinja2 substitutes the {{..}} part with corresponding value in 
+render_template function(# "@app.name...." is a python decorator which maps the view function to a route)
+
+*  Jinja2's template inheritance feature : here layout.html is base template that is
+being inherited.
+
+*  {% block content %}{% endblock %} : block control statment
+
+* WTF_CSRF_ENABLED : activates the cross-site request forgery prevention
+
+* SECRET_KEY : is only needed when CSRF is enabled, 
+and is used to create a cryptographic token that is used to validate a form
+
+* Web forms are represented in Flask-WTF as classes, subclassed from base class Form. 
+A form subclass simply defines the fields of the form as class variables.
+
+* form methods : This tells Flask that this view function accepts GET and POST requests. Without this the view will only accept GET 
+requests. We will want to receive the POST requests, these are the ones that will bring in the form data entered by the user.
+
+* Validate_on_submit: when it is called as part of a form submission request, it will gather all the data, 
+run all the validators attached to fields, and if everything is all right it will return True
+
+* running the db_migrate
+step 1: flask db init 
+# creates a migration repo
+step 2: flask db migrate 
+# Creating the Initial Migration
+The contents of a migration are obtained by running a comparison between the current model definitions and the current schema of your database.
+step 3: flask db upgrade 
+# You will finally apply the changes to the database by running 
+step 3: flask db stamp head 
+# you have to tell Flask-Migrate and Alembic that the database is up to date. You can do this with the stamp comman
+
+
+
+* Creating New sqlite db
+step 1: from silverhorse import create_app
+step 2: app = create_app()
+step 3: app.app_context().push()
+step 4: db.create_all()

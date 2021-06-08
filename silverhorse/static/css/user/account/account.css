@@ -1,0 +1,35 @@
+.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content-section-form {
+  padding: .5em 1.5em;
+}
+
+.account_legend {
+  border-bottom: 1px solid black;
+  width: 160px;
+}
+
+.media .form-group {
+  width: 200px;
+}
+
+@media (min-width: 800px) {
+  .media {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+/*# sourceMappingURL=account.css.map */

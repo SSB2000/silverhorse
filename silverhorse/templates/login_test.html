@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}">
+{% endblock page_css %}
+{% block main %}
+<main role="main" class="container form_div">
+	<div class="">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		<div class="alert alert-{{ category }}">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+		<div class="content-section">
+			<div class="logo"></div>
+			<form method="POST" action="">
+				{{ form.hidden_tag() }}
+				<fieldset class="form-group">
+					<div class="form-group">
+						{% if form.login_creadential.errors %}
+						{{ form.login_creadential(class="input_login form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.login_creadential.errors %}
+							<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+						{% else %}
+						{{ form.login_creadential(class="form-control-lg form-control input_login") }}
+						{% endif %}
+					</div>
+					<div class="form-group">
+						{% if form.password.errors %}
+						{{ form.password(class="input_login form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.password.errors %}
+							<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+						{% else %}
+						{{ form.password(class="form-control-lg form-control input_login") }}
+						{% endif %}
+					</div>
+					<div class="form-check">
+						{{ form.remember(class="form-check-input") }}
+						{{ form.remember.label(class="form-check-label") }}
+					</div>
+				</fieldset>
+				<div class="form-group">
+					{{ form.submit(class="btn btn-outline-info") }}
+					<small class="text-muted ml-2">
+						<a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
+					</small>
+				</div>
+			</form>
+		</div>
+		<div class="content-section alt_login">
+			<a href="{{ url_for('users.login_google')}}" class="btn btn-primary btn-lg btn-block w-80" role="button">Log
+				in with Google</a>
+			<a href="{{ url_for('users.login_google')}}" class="btn btn-primary btn-lg btn-block w-80" role="button">Log
+				in with Facebook</a>
+		</div>
+		<div class="">
+			<small class="text-muted">
+				Need An Account? <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up Now</a>
+			</small>
+		</div>
+	</div>
+</main>
+{% endblock main%}

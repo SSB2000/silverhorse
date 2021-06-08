@@ -1,0 +1,16 @@
+.section_profile {
+	border-bottom: 1px black solid;
+	max-width: 100%;
+}
+
+.section_cover {
+	max-width: 100%;
+	width: 500px;
+	height: 200px;
+	background-image: linear-gradient(to right, red , yellow);
+	position: absolute;
+}
+
+.account-img {
+	
+}

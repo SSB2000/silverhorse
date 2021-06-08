@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block main %}
+<main role="main" class="container color_grey">
+  <div class="content">
+    <div class="post_col">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </div>
+    <div class="side-bar_col">
+      <div class="content-section">
+        <h3>Meet Strangers</h3>
+        <p class='text-muted'></p>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">Item One</li>
+          <li class="list-group-item list-group-item-light">Itemo Two</li>
+          <li class="list-group-item list-group-item-light">Item Three</li>
+          <li class="list-group-item list-group-item-light">Item Four</li>
+        </ul>
+      </div>
+      <div class="content-section mt-0">
+        <h3>Sidebar Two</h3>
+        <p class='text-muted'></p>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">Item One</li>
+          <li class="list-group-item list-group-item-light">Itemo Two</li>
+          <li class="list-group-item list-group-item-light">Item Three</li>
+          <li class="list-group-item list-group-item-light">Item Four</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main%}

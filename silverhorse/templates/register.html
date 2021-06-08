@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block main %}
+{% block page_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css') }}">
+{% endblock page_css %}
+<main role="main" class="container form_div">
+    <div class="">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="content-section">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <div class="logo"></div>
+                    <div class="form-group c_form-group">
+                        {% if form.username.errors %}
+                        {{ form.username(class="input_login form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.username(class="input_login form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {% if form.email.errors %}
+                        {{ form.email(class="input_login form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.email(class="input_login form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {% if form.password.errors %}
+                        {{ form.password(class="input_login form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.password(class="input_login form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="input_login form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.confirm_password(class="input_login form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+        <div class="pt-2">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
+            </small>
+        </div>
+    </div>
+</main>
+{% endblock main %}

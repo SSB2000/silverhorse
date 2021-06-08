@@ -1,0 +1,25 @@
+.logo {
+	width: 100%;
+	height: 100px;
+}
+
+.input_login {
+	width: 100%;
+	border: none;
+	border-bottom: 5px solid rgba(154, 255, 221, 0.563)
+}
+
+.form_div {
+	width: 500px
+}
+
+.form_div .content-section form {
+	padding: 25px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+.alt_login {
+	padding: 0;
+	padding: 10px 25px;
+}
